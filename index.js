@@ -1,21 +1,16 @@
- class Cliente { //a classe é meu molde, meu objeto
-    nome;
-    cpf;
-    agencia;
-    saldo;
-}
-const cliente1 = new Cliente();
-const cliente2 = new Cliente();
+import {Cliente} from "./Cliente.js"; //aqui eu importei meu módulo cliente para compilar aqui
+import {ContaCorrente} from "./ContaCorrente.js" // aqui eu importo o módulo conta corrente
 
-cliente1.nome = 'Ricardo'; // o cliente1 é uma instância do meu objeto, aqui eu instanciei meu objeto.
-cliente1.cpf = 11122233309;
-cliente1.agenciaAgencia = 1001;
-cliente1.saldo = 0; 
+const cliente1 = new Cliente("Ricardo", 11122233309);
+const cliente2 = new Cliente("Alice",88822233309);
 
-cliente2.nome = 'Alice';
-cliente2.cpf = 88822233309;
-cliente2.agencia = 1001;
-cliente2.saldo = 0; 
+const conta1 = new ContaCorrente(1001, cliente1);
+const conta2 = new ContaCorrente(102, cliente2);
 
-console.log(cliente1);
-console.log(cliente2);
+let valor = 200;
+//movimentação da conta
+conta1.sacar(50); //sacando 50,00 reais da conta1
+conta1.depositar(500); //depositando 500 reais na conta1
+conta1.transferir(valor, conta2); //transferir da conta1 o valor definido na let valor para a conta2
+
+console.log(ContaCorrente.numeroDeContas);
